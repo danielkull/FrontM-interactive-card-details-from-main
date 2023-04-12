@@ -1,0 +1,216 @@
+/* Font Familiy */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid black; */
+}
+
+:root {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+
+  /* Custom Properties: Colors */
+  --active-input-border: linear-gradient(
+    hsl(249, 99%, 64%) to hsl(278, 94%, 30%)
+  );
+  --input-errors: hsl(0, 100%, 66%);
+
+  --white: hsl(0, 0%, 100%);
+  --light-grayish-violet: hsl(270, 3%, 87%);
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+
+  /* Custom Properties: Font */
+  --label-text-size: 0.6rem;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: repeat(3, 30% 65% 5%);
+}
+
+header {
+  height: 12rem;
+  background: linear-gradient(
+    140deg,
+    hsl(282, 96%, 22%) 20%,
+    hsl(282, 84%, 42%) 60%,
+    hsl(282, 96%, 22%) 100%
+  );
+  position: relative;
+}
+
+main {
+  display: grid;
+  place-content: start center;
+}
+
+button {
+  width: 100%;
+  background-color: hsl(278, 68%, 11%);
+  color: white;
+  padding: 0.75rem;
+  border: 0px;
+  border-radius: 0.5rem;
+}
+
+footer {
+  display: grid;
+  place-content: center;
+}
+
+.view-form-section {
+  margin-top: 5rem;
+}
+
+.view-form {
+  /* border: 2px red solid; */
+  max-width: 80vw;
+}
+
+label {
+  display: block;
+  font-size: var(--label-text-size);
+  text-transform: uppercase;
+  margin-left: 0.2rem;
+  color: var(--very-dark-violet);
+}
+
+legend {
+  font-size: var(--label-text-size);
+  text-transform: uppercase;
+  margin-left: 0.2rem;
+}
+
+.card {
+  aspect-ratio: 2/1;
+  height: 8rem;
+  border-radius: 0.5rem;
+}
+
+.preview-back {
+  background-color: hsl(0, 0%, 95%);
+  position: absolute;
+  top: 10%;
+  left: 18%;
+  padding-top: 1rem;
+}
+
+.magnetstripe {
+  width: 100%;
+  height: 1.5rem;
+  background-color: hsl(0, 0%, 20%);
+}
+
+.cvc-field {
+  width: 80%;
+  background-color: hsl(0, 0%, 77%);
+  padding: 0.5em;
+  text-align: end;
+  margin: 0 auto;
+  margin-top: 0.8rem;
+  border-radius: 0.2rem;
+  color: var(--white);
+  font-size: 12px;
+}
+
+.preview-front {
+  background: linear-gradient(
+    140deg,
+    hsl(282, 96%, 50%) 20%,
+    hsl(282, 84%, 72%) 60%,
+    hsl(282, 96%, 50%) 100%
+  );
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  padding: 1rem;
+}
+
+.preview-icon {
+  width: 3rem;
+}
+
+.preview-data {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+.preview-font {
+  color: var(--white);
+}
+
+#preview-cardnumber {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 40%;
+}
+
+#preview-exp-date {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 1rem;
+}
+
+#preview-cardholder {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 1rem;
+}
+
+.field {
+  border: solid hsl(270, 3%, 87%) 1px;
+  border-radius: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+.short-cvc {
+  width: 10ch;
+}
+
+.short-date {
+  width: 6ch;
+}
+
+.fieldset-exp-date {
+  all: unset;
+  display: flex;
+}
+
+.field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 0.5rem;
+}
+
+.view-thankyou-section {
+  display: none;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: hsl(228, 45%, 44%);
+}
+
+/*
+to Do's
+
+- Input felder sind leicht verstezt --> Warum??
+
+*/
