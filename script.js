@@ -14,9 +14,9 @@ bindPreview("year", "00");
 function previewCardField(inputValue, defaultValue, previewSelector) {
   let currentValue = inputValue;
 
-  if (previewSelector === "#preview-cardnumber") {
+  /*   if (previewSelector === "#preview-cardnumber") {
     currentValue = styleCardNumber(inputValue, previewSelector);
-  }
+  } */
 
   if (currentValue === "") {
     currentValue = defaultValue;

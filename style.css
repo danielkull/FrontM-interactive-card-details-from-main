@@ -16,7 +16,8 @@
 
   /* Custom Properties: Colors */
   --active-input-border: linear-gradient(
-    hsl(249, 99%, 64%) to hsl(278, 94%, 30%)
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
   );
   --input-errors: hsl(0, 100%, 66%);
 
@@ -39,6 +40,8 @@ body {
   grid-template-rows: repeat(3, 30% 65% 5%);
 }
 
+/* ===== Start: Header CSS ===== */
+
 header {
   height: 12rem;
   background: linear-gradient(
@@ -48,48 +51,6 @@ header {
     hsl(282, 96%, 22%) 100%
   );
   position: relative;
-}
-
-main {
-  display: grid;
-  place-content: start center;
-}
-
-button {
-  width: 100%;
-  background-color: hsl(278, 68%, 11%);
-  color: white;
-  padding: 0.75rem;
-  border: 0px;
-  border-radius: 0.5rem;
-}
-
-footer {
-  display: grid;
-  place-content: center;
-}
-
-.view-form-section {
-  margin-top: 5rem;
-}
-
-.view-form {
-  /* border: 2px red solid; */
-  max-width: 80vw;
-}
-
-label {
-  display: block;
-  font-size: var(--label-text-size);
-  text-transform: uppercase;
-  margin-left: 0.2rem;
-  color: var(--very-dark-violet);
-}
-
-legend {
-  font-size: var(--label-text-size);
-  text-transform: uppercase;
-  margin-left: 0.2rem;
 }
 
 .card {
@@ -121,7 +82,8 @@ legend {
   margin-top: 0.8rem;
   border-radius: 0.2rem;
   color: var(--white);
-  font-size: 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
 }
 
 .preview-front {
@@ -148,6 +110,7 @@ legend {
 
 .preview-font {
   color: var(--white);
+  letter-spacing: 0.1rem;
 }
 
 #preview-cardnumber {
@@ -168,22 +131,66 @@ legend {
   bottom: 1rem;
 }
 
+/* ===== End: Header CSS ===== */
+
+/* ===== Start: Main CSS ===== */
+
+main {
+  display: grid;
+  place-content: start center;
+}
+
+.view-form-section {
+  margin-top: 5rem;
+}
+
+.view-form {
+  /* border: 2px red solid; */
+  min-width: 70vw;
+}
+
+label,
+legend,
+.field,
+.field::placeholder {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  font-size: var(--label-text-size);
+  text-transform: uppercase;
+  color: var(--very-dark-violet);
+  letter-spacing: 0.1rem;
+}
+
+legend {
+  font-size: var(--label-text-size);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
 .field {
+  color: var(--very-dark-violet);
   border: solid hsl(270, 3%, 87%) 1px;
   border-radius: 0.5rem;
   margin-top: 0.25rem;
   margin-bottom: 1rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 0.25rem;
   width: 100%;
 }
 
+.field::placeholder {
+  color: var(--dark-grayish-violet);
+}
+
 .short-cvc {
-  width: 10ch;
+  width: 20ch;
 }
 
 .short-date {
-  width: 6ch;
+  width: 7ch;
 }
 
 .fieldset-exp-date {
@@ -191,15 +198,93 @@ legend {
   display: flex;
 }
 
+#year {
+  margin-left: 1rem;
+}
+
 .field-wrapper {
   display: flex;
   flex-wrap: wrap;
   /* grid-template-columns: 1fr 1fr; */
   gap: 0.5rem;
+  justify-content: space-between;
 }
 
 .view-thankyou-section {
   display: none;
+}
+
+button {
+  width: 100%;
+  background-color: hsl(278, 68%, 11%);
+  color: white;
+  padding: 0.75rem;
+  border: 0px;
+  border-radius: 0.5rem;
+}
+
+/* ===== End: Main CSS ===== */
+
+/* === TEST for Input Validation === */
+
+.view-form {
+  position: relative;
+}
+
+.field:focus {
+  border: 1px solid;
+  border-image-source: var(--active-input-border);
+  outline: none;
+  border-image-slice: 1;
+}
+
+.field:invalid:not(:placeholder-shown) {
+  border: 1px var(--input-errors) solid;
+}
+
+.invalid-text {
+  color: var(--input-errors);
+  font-size: 0.5rem;
+  text-transform: none;
+}
+
+#cardnumber:invalid:not(:placeholder-shown) ~ .invalid-cardnumber:after {
+  position: absolute;
+  top: 125px;
+  left: 0;
+  content: "Wrong format, numbers only";
+}
+
+#cardholder:invalid:not(:placeholder-shown) ~ .invalid-cardholder:after {
+  position: absolute;
+  color: var(--input-errors);
+  top: 55px;
+  left: 0;
+  content: "Please enter at least 5 letters and no numbers.";
+}
+
+#year:invalid:not(:placeholder-shown) ~ .invalid-exp-date:after,
+#month:invalid:not(:placeholder-shown) ~ .invalid-exp-date:after {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  content: "Can't be blank";
+}
+
+#cvc:invalid:not(:placeholder-shown) ~ .invalid-cvc:after {
+  position: absolute;
+  top: 200px;
+  right: 85px;
+  content: "Can't be blank";
+}
+
+/* === END of TEST for Input Validation === */
+
+/* ===== Start: Footer CSS ===== */
+
+footer {
+  display: grid;
+  place-content: center;
 }
 
 .attribution {
@@ -208,31 +293,7 @@ legend {
   color: hsl(228, 45%, 44%);
 }
 
-/* === TEST for Input Validation === */
-
-#cardnumber {
-  /* position: relative; */
-}
-
-.view-form {
-  position: relative;
-}
-
-.field:invalid:not(:placeholder-shown) {
-  border: 2px var(--input-errors) solid;
-}
-
-.field:invalid:not(:placeholder-shown) ~ .invalid-cardnumber:after {
-  position: absolute;
-  color: var(--input-errors);
-  font-size: 0.5rem;
-  top: 110px;
-  left: 0;
-  content: "Wrong format, numbers only.";
-  text-transform: none;
-}
-
-/* === END of TEST for Input Validation === */
+/* ===== End: Footer CSS ===== */
 
 /*
 to Do's
