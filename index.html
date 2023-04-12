@@ -41,19 +41,22 @@
     <section class="view-form-section">
       <form class="view-form" action="#" id="view-form-id">
         <label for="cardholder">Cardholder Name</label>
-        <input id="cardholder" type="text" placeholder="e.g. Jane Appleseed" class="field" />
+        <input id="cardholder" type="text" placeholder="e.g. Jane Appleseed" class="field" required />
 
         <label for="cardnumber">Card Number</label>
-        <input id="cardnumber" type="text" placeholder="e.g. 1234 5678 9123 0000" class="field" />
+        <input id="cardnumber" type="text" placeholder="e.g. 1234 5678 9123 0000" class="field" pattern="[0-9]{19}"
+          maxlength="19" required />
+        <span class="invalid-cardnumber"></span>
 
         <div class="field-wrapper">
           <fieldset class="fieldset-exp-date">
             <legend>Exp. Date (MM/YY)</legend>
             <label for="month"></label>
-            <input id="month" name="month" placeholder="MM" class="field short-date" />
+            <input id="month" name="month" placeholder="MM" class="field short-date" type="number" pattern="\d{1,2}"
+              maxlength="2" />
 
             <label for="year"></label>
-            <input id="year" name="year" placeholder="YY" class="field short-date" />
+            <input type="number" id="year" name="year" placeholder="YY" class="field short-date" max="12" />
           </fieldset>
 
           <div>

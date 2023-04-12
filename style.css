@@ -208,9 +208,36 @@ legend {
   color: hsl(228, 45%, 44%);
 }
 
+/* === TEST for Input Validation === */
+
+#cardnumber {
+  /* position: relative; */
+}
+
+.view-form {
+  position: relative;
+}
+
+.field:invalid:not(:placeholder-shown) {
+  border: 2px var(--input-errors) solid;
+}
+
+.field:invalid:not(:placeholder-shown) ~ .invalid-cardnumber:after {
+  position: absolute;
+  color: var(--input-errors);
+  font-size: 0.5rem;
+  top: 110px;
+  left: 0;
+  content: "Wrong format, numbers only.";
+  text-transform: none;
+}
+
+/* === END of TEST for Input Validation === */
+
 /*
 to Do's
 
 - Input felder sind leicht verstezt --> Warum??
+-Thank you Seite
 
 */
